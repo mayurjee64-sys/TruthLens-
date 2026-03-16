@@ -1,40 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TruthLens – See the truth behind every claim.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    /* ============================================================
-       CSS Variables & Reset
-    ============================================================ */
-    :root {
-      --blue-deep:   #0d2045;
-      --blue-dark:   #1a3a6e;
-      --blue-mid:    #1e4d99;
-      --blue-bright: #2563eb;
-      --blue-light:  #4a9eff;
-      --blue-pale:   #dbeafe;
-      --blue-bg:     #f0f6ff;
-      --green:       #22c55e;
-      --green-dark:  #16a34a;
-      --amber:       #f59e0b;
-      --red:         #ef4444;
-      --gray-soft:   #f8fafc;
-      --gray-border: #e2e8f0;
-      --text-main:   #0f172a;
-      --text-muted:  #64748b;
-      --white:       #ffffff;
-      --radius-lg:   18px;
-      --radius-md:   12px;
-      --radius-sm:   8px;
-      --shadow-card: 0 4px 24px rgba(37,99,235,0.10);
-      --shadow-hover:0 8px 36px rgba(37,99,235,0.18);
-      --transition:  0.22s cubic-bezier(0.4,0,0.2,1);
-      --font-display:'Sora', sans-serif;
+<title>TruthLens</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0d2045;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+text-align:center;
+width:90%;
+max-width:500px;
+}
+
+.logo{
+font-size:42px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#a8c1ff;
+margin-bottom:30px;
+}
+
+input{
+width:100%;
+padding:14px;
+border-radius:10px;
+border:none;
+font-size:16px;
+margin-bottom:15px;
+}
+
+button{
+background:#22c55e;
+border:none;
+padding:14px 20px;
+border-radius:10px;
+color:white;
+font-size:16px;
+cursor:pointer;
+width:100%;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+.result{
+margin-top:25px;
+padding:15px;
+background:white;
+color:black;
+border-radius:10px;
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">TruthLens</div>
+
+<div class="subtitle">
+AI powered fact-checking tool
+</div>
+
+<input 
+type="text"
+id="claim"
+placeholder="Paste a claim or news headline..."
+>
+
+<button onclick="checkTruth()">
+Check Truth
+</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function checkTruth(){
+
+const claim = document.getElementById("claim").value
+const result = document.getElementById("result")
+
+if(claim.trim() === ""){
+result.style.display="block"
+result.innerHTML="Please enter a claim first."
+return
+}
+
+result.style.display="block"
+
+result.innerHTML="Analyzing information..."
+
+setTimeout(()=>{
+result.innerHTML="⚠️ This is a demo result. Connect an AI API to verify real information."
+},1500)
+
+}
+
+</script>
+
+</body>
+</html>      --font-display:'Sora', sans-serif;
       --font-body:   'DM Sans', sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
